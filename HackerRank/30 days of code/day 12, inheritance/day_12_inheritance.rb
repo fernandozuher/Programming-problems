@@ -4,6 +4,7 @@ class Person
         @lastName = lastName
         @id = id
     end
+    
     def printPerson()
         print("Name: ",@lastName , ", " + @firstName ,"\nID: " , @id)
     end
