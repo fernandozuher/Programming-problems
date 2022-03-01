@@ -28,7 +28,6 @@ function Solution() {
     this.insert = function(head, data) {
 
         let start
-
         if (head) {
             start = head
             for ( ; start.next; start = start.next);
@@ -43,6 +42,7 @@ function Solution() {
     }
 
     this.display = function(head) {
+
         let start = head;
             while (start) {
                 process.stdout.write(start.data + " ");
