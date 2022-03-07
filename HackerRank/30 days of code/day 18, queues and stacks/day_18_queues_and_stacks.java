@@ -3,11 +3,11 @@ import java.util.*;
 
 public class Solution {
     private Stack<Character> myStack;
-    private PriorityQueue<Character> myQueue;
+    private Deque<Character> myQueue;
 
     Solution() {
         myStack = new Stack<Character>();
-        myQueue = new PriorityQueue<Character>();
+        myQueue = new LinkedList<Character>();
     }
 
     void pushCharacter(char ch) {
@@ -19,11 +19,11 @@ public class Solution {
     }
 
     char popCharacter() {
-        return myStack.pop().charValue();
+        return myStack.pop();
     }
 
     char dequeueCharacter() {
-        return myQueue.poll().charValue();
+        return myQueue.poll();
     }
 
     boolean empty() {
@@ -38,26 +38,18 @@ public class Solution {
         // Convert input String to an array of characters:
         char[] s = input.toCharArray();
 
-        // Create a Solution object:
-        Solution p = new Solution();
+        Solution obj = new Solution();
 
-        // Enqueue/Push all chars to their respective data structures:
         for (char c : s) {
-            p.pushCharacter(c);
-            p.enqueueCharacter(c);
+            obj.pushCharacter(c);
+            obj.enqueueCharacter(c);
         }
 
-        // Pop/Dequeue the chars at the head of both data structures and compare them:
-        boolean isPalindrome = true;
-        for (int i = 0; i < s.length/2; i++) {
-            if (p.popCharacter() != p.dequeueCharacter()) {
-                isPalindrome = false;                
-                break;
-            }
-        }
+        int i = 0;
+        for ( ; !obj.empty() && obj.popCharacter() == obj.dequeueCharacter(); ++i);
 
-        //Finally, print whether string s is palindrome or not.
+        boolean isPalindrome = i < s.length / 2;
         System.out.println( "The word, " + input + ", is " 
-                           + ( (!isPalindrome) ? "not a palindrome." : "a palindrome." ) );
+                           + (!isPalindrome ? "" : "not ") + "a palindrome." );
     }
 }
