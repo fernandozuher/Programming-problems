@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Solution {
     private Stack<Character> myStack;
-    private Deque<Character> myQueue;
+    private Queue<Character> myQueue;
 
     Solution() {
         myStack = new Stack<Character>();
