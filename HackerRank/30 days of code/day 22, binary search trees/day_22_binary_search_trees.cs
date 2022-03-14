@@ -29,6 +29,7 @@ class Solution {
     }
 
     // Immutable HackerRank code below
+    
     static Node insert(Node root, int data){
         if(root==null){
             return new Node(data);

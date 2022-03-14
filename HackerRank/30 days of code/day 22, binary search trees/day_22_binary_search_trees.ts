@@ -19,64 +19,72 @@ function readLine(): string {
     return inputLines[currentLine++];
 }
 
-interface Node {
+class myNode {
     data: number
-    left: Node | null
-    right: Node | null
+    left: myNode | null
+    right: myNode | null
+    
+    constructor(data: number) {
+        this.data = data
+    }
 }
 
 class Tree {
 
-    static insert(root : Node, data : number) : Node {
+    static currentHeight = 0
+    static maxHeight = 0
+
+    static insert(root: myNode, data : number) : myNode {
         if (root === null) {
-            this.root = new Node(data);
-            return this.root;
+            root = new myNode(data)
+            return root;
         }
         
         if (data <= root.data) {
             if (root.left)
                 this.insert(root.left, data);
             else
-                root.left = new Node(data);
+                root.left = new myNode(data)
         }
         else {
             if (root.right)
                 this.insert(root.right, data);
             else
-                root.right = new Node(data);
+                root.right = new myNode(data)
         }
         
-        return this.root;
+        return root;
     }
 
-    static getHeight(root : Node) : number {
-
-        arguments.callee.height = arguments.callee.height || 0
-        arguments.callee.maxHeight = arguments.callee.maxHeight || 0
+    static getHeight(root: myNode) : number {
 
         if (root.left || root.right) {
-            arguments.callee.height++
+            this.currentHeight++
             if (root.left)
                 this.getHeight(root.left)
             if (root.right)
                 this.getHeight(root.right)
-            arguments.callee.height--
+            this.currentHeight--
         }
-        else if (arguments.callee.height > arguments.callee.maxHeight)
-            arguments.callee.maxHeight = arguments.callee.height
+        else if (this.currentHeight > this.maxHeight)
+            this.maxHeight = this.currentHeight
         
-        return arguments.callee.maxHeight
+        return this.maxHeight
+    }
+
+    static resetHeight() {
+        this.currentHeight = 0
+        this.maxHeight = 0
     }
 }
 
 function main() {
     
-    let root: Node = null;
+    let root: myNode = null
     
-    readLine()
-    let values = readLine.split().map(Number);
+    for (let n = +readLine(); n--; )
+        root = Tree.insert(root, +readLine())
     
-    values.forEach((value) => {root = Tree.insert(root, value)});
-    
-    console.log(Tree.getHeight(root));
+    Tree.resetHeight()
+    console.log(Tree.getHeight(root))
 }
