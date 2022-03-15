@@ -35,19 +35,19 @@ function BinarySearchTree() {
     this.getHeight = function(root) {
         // Immutable HackerRank code above
         
-        arguments.callee.height = arguments.callee.height || 0
+        arguments.callee.currentHeight = arguments.callee.currentHeight || 0
         arguments.callee.maxHeight = arguments.callee.maxHeight || 0
 
         if (root.left || root.right) {
-            arguments.callee.height++
+            arguments.callee.currentHeight++
             if (root.left)
                 this.getHeight(root.left)
             if (root.right)
                 this.getHeight(root.right)
-            arguments.callee.height--
+            arguments.callee.currentHeight--
         }
-        else if (arguments.callee.height > arguments.callee.maxHeight)
-            arguments.callee.maxHeight = arguments.callee.height
+        else if (arguments.callee.currentHeight > arguments.callee.maxHeight)
+            arguments.callee.maxHeight = arguments.callee.currentHeight
         
         return arguments.callee.maxHeight
 

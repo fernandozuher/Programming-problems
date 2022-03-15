@@ -14,20 +14,20 @@ Node* newNode(int data){
 // Immutable HackerRank code above
 
 int getHeight(Node *root) {
-    static int height = 0, maxHeight = 0;
+    static int current_height = 0, max_height = 0;
 
     if (root->left || root->right) {
-        ++height;
+        ++current_height;
         if (root->left)
             getHeight(root->left);
         if (root->right)
             getHeight(root->right);
-        --height;
+        --current_height;
     }
-    else if (height > maxHeight)
-        maxHeight = height;
+    else if (current_height > max_height)
+        max_height = current_height;
     
-    return maxHeight;
+    return max_height;
 }
 
 // Immutable HackerRank code below

@@ -37,20 +37,20 @@ public:
     }
 
     static int get_height(Node *root) {
-        static int height {}, maxHeight {};
+        static int current_height {}, max_height {};
 
         if (root->left || root->right) {
-            ++height;
+            ++current_height;
             if (root->left)
                 get_height(root->left);
             if (root->right)
                 get_height(root->right);
-            --height;
+            --current_height;
         }
-        else if (height > maxHeight)
-            maxHeight = height;
+        else if (current_height > max_height)
+            max_height = current_height;
         
-        return maxHeight;
+        return max_height;
     }
 };
 
