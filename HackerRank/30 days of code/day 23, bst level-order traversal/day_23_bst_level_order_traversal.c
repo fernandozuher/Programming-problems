@@ -17,11 +17,10 @@ Node* newNode(int data){
 // Immutable HackerRank code above
 
 void levelOrder(Node* root) {
-    Node *queue[20];
-
     if (!root)
         return;
 
+    Node *queue[20];
     queue[0] = root;
     printf("%d ", queue[0]->data);
 

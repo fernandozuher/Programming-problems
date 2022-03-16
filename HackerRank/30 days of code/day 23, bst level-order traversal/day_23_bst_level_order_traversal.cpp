@@ -32,11 +32,10 @@ class Solution
         }
 
         static void level_order(Node *root) {
-            queue<Node*> my_queue;
-
             if (!root)
                 return;
             
+            queue<Node*> my_queue;
             my_queue.push(root);
             cout << my_queue.front()->data << " ";
 

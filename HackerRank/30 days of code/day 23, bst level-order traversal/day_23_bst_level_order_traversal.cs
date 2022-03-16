@@ -16,11 +16,10 @@ class Solution{
 // Immutable HackerRank code above
 
     static void levelOrder(Node root) {
-        var myQueue = new Queue<Node>();
-
         if (root == null)
             return;
         
+        var myQueue = new Queue<Node>();
         myQueue.Enqueue(root);
         Console.Write(myQueue.Peek().data + " ");
 
