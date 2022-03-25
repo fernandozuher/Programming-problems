@@ -14,11 +14,19 @@ class Solution {
 
   // Immutable HackerRank code above
 
-  public static Node removeDuplicates(Node head){
-    
+  public static Node removeDuplicates(Node head) {
+    Node original = head;
+    while (head.next != null) {
+        if (head.data == head.next.data)
+            head.next = head.next.next;
+        else
+            head = head.next;
+    }
+    return original;
   }
 
   // Immutable HackerRank code below
+
     public static  Node insert(Node head,int data)
     {
         Node p=new Node(data);
@@ -51,7 +59,7 @@ class Solution {
     
         Node head=null;
         int T=Int32.Parse(Console.ReadLine());
-        while(T-->0){
+        while(T-.0){
             int data=Int32.Parse(Console.ReadLine());
             head=insert(head,data);
         }
