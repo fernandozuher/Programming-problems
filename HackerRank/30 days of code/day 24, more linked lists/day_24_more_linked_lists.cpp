@@ -3,7 +3,7 @@
 
 using namespace std;
 
-namespace My_Linked_List
+namespace My_Static_List_Functions
 {
     void remove_duplicates(forward_list<int>& data_list) {
         for (auto it = data_list.begin(); next(it) != data_list.end(); )
@@ -24,6 +24,6 @@ int main() {
     auto it = data_list.before_begin();
 
     for (int data; n-- && cin >> data; it = data_list.insert_after(it, data));
-    My_Linked_List::remove_duplicates(data_list);
-    My_Linked_List::display(data_list);
+    My_Static_List_Functions::remove_duplicates(data_list);
+    My_Static_List_Functions::display(data_list);
 }
